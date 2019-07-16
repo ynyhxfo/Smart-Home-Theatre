@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">   
+    <style>
+            h1 { color:white; }
+    </style>
+    <title>{{movie}}</title>
+</head>
+<body background="/static/images/{{background}}.jpg" id='body'>
+    <div style="position:absolute; right: 80px;top: -10px">
+        <h4><span style="color:white">light</span></h4>
+        <select name="select" onclick="changeBgImg(this)">
+            <option value="/static/images/{{background}}.jpg">{{background}}</option>
+            <option value="/static/images/action.jpg">action</option>
+            <option value="/static/images/classic.jpg">classic</option>
+            <option value="/static/images/drama.jpg">drama</option>
+            <option value="/static/images/musical.jpg">musical</option>
+            <option value="/static/images/romantic.jpg">romantic</option>
+            <option value="/static/images/thriller.jpg">thriller</option>
+        </select>
+        <button type="button" onclick="myFunction()">Turn off</button>
+    </div>
+    <h1>{{movie}}</h1>
+    <div style="margin:auto;width:1000px">
+        <video width="1000" controls>
+            <source src="/static/movies/{{movie}}.mp4" type="video/mp4">
+                <!-- <source src="mov_bbb.ogg" type="video/ogg"> -->
+        </video>
+    </div>
+</body>
+</html>
+<script>
+function changeBgImg(option){
+    document.getElementById("body").style.backgroundImage = "url("+option.options[option.selectedIndex].value+")";
+}
+function myFunction() {
+  document.body.style.backgroundImage = "url('/static/images/black.jpg')";
+}
+</script>

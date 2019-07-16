@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home_theatre_login</title>
+</head>
+<body background="static/images/background.jpg">
+    <br>
+    <br>
+    <div style="margin:auto;width:450px"><h1>Welcome to Home Theatre</h1></div>
+    <br>
+    <div id="login_frame">
+        
+        <!-- <p id="image_logo"></p> -->
+        
+        <form method="POST" action="/login">
+            
+            <table style="border-collapse:separate; border-spacing:0px 15px;margin: auto" >
+                <tr>
+                    <td><img src="static/images/logo_image.png" width="50" height="50"></td>
+                    <td><h2>Login</h2></td>
+                </tr>
+                <tr>
+                    <td>User_name</td>
+                    <td><input type="text" id="username" class="text_field" name="username"/></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" id="password" class="text_field" name="password"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" id="btn_login" value="login"></td>
+                    <td><a id="sign_up" href="sign_up">sign up</a></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Successfully signed up!</title>
+</head>
+<body background="static/images/background.jpg">
+    <h2>You've Successfully Signed Up! The next step is to fill your preference</h2>>
+    <form method='POST' action='/' id="form">
+        <fieldset>
+            <legend>Movie Language</legend>
+            Engilsh<input type="checkbox" name="movie_language" value="English">
+            Chinese<input type="checkbox" name="movie_language" value="Chinese">
+            Spanish<input type="checkbox" name="movie_language" value="Spanish">
+            Japanese<input type="checkbox" name="movie_language" value="Japanese">
+        </fieldset>
+        <fieldset>
+            <legend>Music Language</legend>
+            Engilsh<input type="checkbox" name="music_language" value="English">
+            Chinese<input type="checkbox" name="music_language" value="Chinese">
+            French<input type="checkbox" name="music_language" value="French">
+            Japanese<input type="checkbox" name="music_language" value="Japanese">
+        </fieldset>
+        <fieldset>
+            <legend>Movie Duration</legend>
+            short<input type="checkbox" name="duration" value="short">
+            medium<input type="checkbox" name="duration" value="medium">
+            long<input type="checkbox" name="duration" value="long">
+        </fieldset>
+        <fieldset>
+            <legend>Movie time</legend>
+            vintage<input type="checkbox" name="movie_time" value="vintage">
+            modern<input type="checkbox" name='movie_time' value="modern">
+        </fieldset>
+        <fieldset>
+            <legend>movie genre</legend>
+            romantic<input type="checkbox" name="movie_genre" value="romantic">
+            classic<input type="checkbox" name="movie_genre" value="classic">
+            thriller<input type="checkbox" name="movie_genre" value="thriller">
+            musical<input type="checkbox" name="movie_genre" value="musical">
+            action<input type="checkbox" name="movie_genre" value="action">
+            drama<input type="checkbox" name="movie_genre" value="drama">
+        </fieldset>
+        <fieldset>
+            <legend>music type</legend>
+            love song<input type="checkbox" name="music_type" value="love song">
+            classic<input type="checkbox" name="music_type" value="classic">
+            heavy metal<input type="checkbox" name="music_type" value="heavy metal">
+            BGM<input type="checkbox" name="music_type" value="BGM">
+            rock<input type="checkbox" name="music_type" value="rock">
+        </fieldset>
+        <br>
+        <input type="submit" name="submit" id="submit" onclick="insertPreference()" />
+    </form>
+    <br>
+    <!-- <a href=".">go back to log in page</a> -->
+</body>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+var username = localStorage.getItem('home_theatre_username')
+
+function insertPreference() {
+    console.log(username);
+    var data = $("form").serialize();
+    data = data + "&username=" + username;
+    console.log(data);
+    $.post('insert_preference', data)
+    alert('your preference has been generated')
+    window.location.href('.')
+}
+</script>
+</html>

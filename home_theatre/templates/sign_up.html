@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sign_up</title>
+</head>
+<body background="static/images/background.jpg">
+    <div id="login_frame">
+        <h1>Welcome to Home Theatre</h1>        
+        <form method="POST" action="return false">
+            
+            <table style="border-collapse:separate; border-spacing:0px 15px;margin: auto" >
+                <tr>
+                    <td><img src="static/images/logo_image.png" width="50" height="50"></td>
+                    <td><h2>Log-in</h2></td>
+                </tr>
+                <tr>
+                    <td>User_name</td>
+                    <td><input type="text" id="username" class="text_field" name="username" required/></td>
+                </tr>
+                <tr>
+                    <td>email</td>
+                    <td><input type="text" id="email" class="text_field" name="email" required/></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" id="password" class="text_field" name="password" required/></td>
+                </tr>
+                <tr>
+                    <td>confirm Password</td>
+                    <td><input type="password" id="re_password" class="text_field" name="re_password" required/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" id="btn_signup" value="sign up" onclick="signUp(this.form)"></td>
+                    <td><input type="reset" value="reset"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+<script>
+    function signUp(form) {
+        var username = document.getElementById("username").value;
+        localStorage.setItem('home_theatre_username', username);
+        alert(username + ' successfully signed up');
+        form.action = '/create_user';
+        form.method = 'POST';
+        form.submit();
+    }
+</script>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Main page</title>
+</head>
+<body background="static/images/background.jpg">
+    
+    <div class="hehe" style="margin-left:30px;"><h3><a href='/' style="color:hotpink;">Log-off</a></h3></div>
+    <div style="margin-left:300px"><h1>Hello, {{userInf['username']}}</h1></div>
+    <br>
+    <br>
+    <div class="panel-group" id="accordion" style="width: 600px; margin-left: 300px">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" 
+                       href="#collapseOne">
+                        All Movies
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    {% for movie in movieList%}
+                    <a href="/movie/{{movie['Title']}}/{{userInf['username']}}" target="_blank">{{movie['Title']}}</a><br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" 
+                       href="#collapseTwo">
+                        All Music
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {% for music in musicList%}
+                    <a href="/music/{{music['Song']}}/{{userInf['username']}}" target="_blank">{{music['Song']}}</a><br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" 
+                       href="#collapseThree">
+                       Movies Recommendation with preference
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {% for movie in guess_you_like_movie%}
+                    <a href="/movie/{{movie[0][0]}}/{{userInf['username']}}" target="_blank">{{movie[0][0]}}</a>: {{movie[1]}}<br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" 
+                       href="#collapseFour">
+                       Musics Recommendation with preference
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {% for music in guess_you_like_music%}
+                    <a href="/music/{{music[0][0]}}/{{userInf['username']}}" target="_blank">{{music[0][0]}}</a>: {{music[1]}}<br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" 
+                       href="#collapseFive">
+                       Movies Recommendation by play history
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {% for movie in guess_you_like_movie_history%}
+                    <a href="/movie/{{movie[0][0]}}/{{userInf['username']}}" target="_blank">{{movie[0][0]}}</a>: {{movie[1]}}<br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" 
+                       href="#collapseSix">
+                       Musics Recommendation by play history
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {% for music in guess_you_like_music_history%}
+                    <a href="/music/{{music[0][0]}}/{{userInf['username']}}" target="_blank">{{music[0][0]}}</a>: {{music[1]}}<br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" 
+                       href="#collapseSeven">
+                       Movie play history (last ten)
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSeven" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {% for movie in movie_with_genre%}
+                    <a href="/movie/{{movie[0]}}/{{userInf['username']}}" target="_blank">{{movie[0]}}</a>: {{movie[1]}}<br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" 
+                       href="#collapseEight">
+                       Music play history (last ten)
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseEight" class="panel-collapse collapse">
+                <div class="panel-body">
+                    {% for music in music_with_type%}
+                    <a href="/music/{{music[0]}}/{{userInf['username']}}" target="_blank">{{music[0]}}</a>: {{music[1]}}<br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div>
+        <h3>All Movies</h3>
+        {% for movie in movieList%}
+        <a href="/movie/{{movie['Title']}}" target="_blank">{{movie['Title']}}</a><br>
+        {% endfor %}
+    </div>
+    <div style="position:absolute; left:300px; top:65px;">
+        <h3>All Music</h3>
+        {% for music in musicList%}
+        <a href="/music/{{music['Song']}}" target="_blank">{{music['Song']}}</a><br>
+        {% endfor %}
+    </div>
+    <div style="position:absolute; left:500px; top:65px;">
+        <h3>Movies Recommendation with scores</h3>
+        {% for movie in guess_you_like_movie%}
+        <a href="/movie/{{movie[0][0]}}" target="_blank">{{movie[0][0]}}</a>: {{movie[1]}}<br>
+        {% endfor %}
+    </div> -->
+</body>
+</html>

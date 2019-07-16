@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">   
+    <style>
+            h1 { color:white; }
+    </style>
+    <title>{{music}}</title>
+</head>
+<body id="body" background="/static/images/{{background}}.jpg">
+    <div style="position:absolute; right: 200px;top: 30px">
+            <h4><span style="color:white">light</span></h4>
+            <select name="select" onclick="changeBgImg(this)">
+                <option value="/static/images/{{background}}.jpg">{{background}}</option>
+                <option value="/static/images/action.jpg">action</option>
+                <option value="/static/images/classic.jpg">classic</option>
+                <option value="/static/images/drama.jpg">drama</option>
+                <option value="/static/images/musical.jpg">musical</option>
+                <option value="/static/images/romantic.jpg">romantic</option>
+                <option value="/static/images/thriller.jpg">thriller</option>
+            </select>
+            <button type="button" onclick="myFunction()">Turn off</button>
+        </div>
+    <div style='margin: auto;width: 30%;margin-top:100px'>
+        <h1>{{music}}</h1>
+        <br>
+        <div>
+            <audio controls>
+                <source src="/static/musics/{{music}}.mp3" type="audio/mpeg">
+                <!-- <source src="horse.mp3" type="audio/mpeg"> -->
+            </audio>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+function changeBgImg(option){
+    document.getElementById("body").style.backgroundImage = "url("+option.options[option.selectedIndex].value+")";
+}
+function myFunction() {
+    document.body.style.backgroundImage = "url('/static/images/black.jpg')";
+}
+</script>
