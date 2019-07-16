@@ -9,3 +9,4 @@ movies and musics recommendation by user's preference
 movies and musics recommendation by play history
 smart background light according to genres and types of median
 
+![image](https://github.com/ynyhxfo/Smart-Home-Theatre/blob/master/images/
